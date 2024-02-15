@@ -26,6 +26,7 @@ body {
                        rgba(0, 0, 0, 0.8)), url("resources/header-image.png");
     background-size: cover; 
     background-position-y: -190px;
+    min-height: 200px;
     height: 200px;
     width: 100%;
     display: flex;
@@ -60,6 +61,7 @@ body {
 #search-bar-form {
     display: flex;
     align-items: center;
+    min-height: 50px;
     height: 50px;
     width: 85%;
     box-sizing: border-box;
