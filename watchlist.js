@@ -4,7 +4,7 @@ const searchMessageStatusDiv = document.getElementById("search-message-status-di
 
 //watchlist will be set to whatever is in filmsArray in local storage 
 let watchlistArray = initialiseLocalStorage()
-checkEmptyWatchlist()
+checkForEmptyWatchlist()
 
 document.addEventListener("click",function(e){
     
