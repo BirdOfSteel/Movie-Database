@@ -27,15 +27,23 @@ function addToWatchlist(filmID) {
     
     const titleElement = document.querySelector(`[data-titleid=${filmID}title]`);
     const textElement = document.querySelector(`[data-watchlistid=${filmID}watchlist]`);
-    
-    if (!watchlist.includes(filmID)) {
+
+    let watchlistIDArray = [];
+
+    for (let object of watchlist) {
+        watchlistIDArray.push(object.id)
+    };
+
+    console.log(watchlistIDArray);
+
+    if (!watchlistIDArray.includes(filmID)) {
         const watchlistObject = {
             title: `${titleElement.textContent}`,
             id: `${filmID}`
             
-        }
-        watchlist.push(watchlistObject)
-        localStorage.setItem("filmArray",JSON.stringify(watchlist))
+        };
+        watchlist.push(watchlistObject);
+        localStorage.setItem("filmArray",JSON.stringify(watchlist));
         
         textElement.textContent = "Added to watchlist!";
         textElement.classList.add("green-text");
@@ -60,20 +68,20 @@ function addToWatchlist(filmID) {
 
 async function renderSearchResults(searchResultsArray) {
 
-    let idArray = []
-    let filmListHTML = ``
+    let idArray = [];
+    let filmListHTML = ``;
     
     for (let filmObject of searchResultsArray) {
-        idArray.push(filmObject.imdbID)
+        idArray.push(filmObject.imdbID);
     }
-    
+    console.log(searchResultsArray)
     for (let id of idArray) {
-        const response = await fetch(`https://www.omdbapi.com/?apikey=9f3c3104&i=${id}`)
-        const filmObject = await response.json()
+        const response = await fetch(`https://www.omdbapi.com/?apikey=9f3c3104&i=${id}`);
+        const filmObject = await response.json();
         
         let imgElement = ``;        
         if (filmObject.Poster != "N/A") {
-            imgElement = `<img src="${filmObject.Poster}" class="film-img"></img>`
+            imgElement = `<img src="${filmObject.Poster}" class="film-img"></img>`;
         }
         
         filmListHTML+= `
@@ -119,7 +127,7 @@ async function fetchThenRenderFilms(filmName) {
     else {
         searchResultsDiv.innerHTML = "";
         searchMessageDiv.innerHTML = 
-            `<p id="search-message-error">Unable to find what you’re looking for. Please try another search term.</p>`
+            `<p id="search-message-error">Unable to find what you’re looking for. Please try another search term.</p>`;
     }
     
 }
@@ -127,7 +135,7 @@ async function fetchThenRenderFilms(filmName) {
 function initialiseLocalStorage() {
     
     if (localStorage.getItem("filmArray")) {
-        let watchlist = JSON.parse(localStorage.getItem("filmArray"))
+        let watchlist = JSON.parse(localStorage.getItem("filmArray"));
         return watchlist
     }
 

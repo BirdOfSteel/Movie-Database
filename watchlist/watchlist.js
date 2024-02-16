@@ -61,6 +61,7 @@ async function renderWatchlist(watchlistArray) {
     let watchlistHTML = "";
     
     for (let object of watchlistArray) {
+        console.log("executed")
         const response = await fetch(`https://www.omdbapi.com/?apikey=9f3c3104&i=${object.id}`)
         const filmObject = await response.json()
         
