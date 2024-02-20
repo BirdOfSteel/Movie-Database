@@ -87,6 +87,7 @@ body {
     outline: none;
     color: #A5A5A5;
     user-select: none;
+    font-size: 1em;
 }
 
 #search-bar:focus {
