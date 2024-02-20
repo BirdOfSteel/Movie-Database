@@ -1,30 +1,33 @@
+import './styles/index.css';
+import './styles/watchlist.css';
+
 const searchBarForm = document.getElementById("search-bar-form");
 const searchBarInput = document.getElementById("search-bar");
 const searchResultsDiv = document.getElementById("search-results-div");
 const searchMessageStatusDiv = document.getElementById("search-message-status-div");
 
 /* Change this to the film title you want to load on start */
-let searchTerm = "Blade Runner"; 
+let searchTerm = "Blade Runner";
 
 let watchlist = initialiseLocalStorage()
 
 
-document.addEventListener("click",function(e){
-    
+document.addEventListener("click", function (e) {
+
     if (e.target.id == "search-btn" && searchBarInput.value) {
         searchTerm = searchBarInput.value;
         fetchThenRenderFilms(searchTerm);
         searchBarInput.value = "";
     }
 
-    else if(e.target.classList.contains("add-to-watchlist-element")) {
+    else if (e.target.classList.contains("add-to-watchlist-element")) {
         addToWatchlist(e.target.dataset.filmid);
     }
-    
+
 })
 
 function addToWatchlist(filmID) {
-    
+
     const titleElement = document.querySelector(`[data-titleid=${filmID}title]`);
     const textElement = document.querySelector(`[data-watchlistid=${filmID}watchlist]`);
 
@@ -40,29 +43,29 @@ function addToWatchlist(filmID) {
         const watchlistObject = {
             title: `${titleElement.textContent}`,
             id: `${filmID}`
-            
+
         };
         watchlist.push(watchlistObject);
-        localStorage.setItem("filmArray",JSON.stringify(watchlist));
-        
+        localStorage.setItem("filmArray", JSON.stringify(watchlist));
+
         textElement.textContent = "Added to watchlist!";
         textElement.classList.add("green-text");
-        
-        setTimeout(function(){
+
+        setTimeout(function () {
             textElement.textContent = "Watchlist";
             textElement.classList.remove("green-text");
-        },4000);
-        
+        }, 4000);
+
     }
-    
-    else if (textElement.textContent != "Already in watchlist"){
+
+    else if (textElement.textContent != "Already in watchlist") {
         textElement.textContent = "Already in watchlist";
         textElement.classList.add("orange-text");
-        
-        setTimeout(function(){
+
+        setTimeout(function () {
             textElement.textContent = "Watchlist";
             textElement.classList.remove("orange-text");
-        },4000);
+        }, 4000);
     }
 }
 
@@ -70,7 +73,7 @@ async function renderSearchResults(searchResultsArray) {
 
     let idArray = [];
     let filmListHTML = ``;
-    
+
     for (let filmObject of searchResultsArray) {
         idArray.push(filmObject.imdbID);
     }
@@ -78,13 +81,13 @@ async function renderSearchResults(searchResultsArray) {
     for (let id of idArray) {
         const response = await fetch(`https://www.omdbapi.com/?apikey=9f3c3104&i=${id}`);
         const filmObject = await response.json();
-        
-        let imgElement = ``;        
+
+        let imgElement = ``;
         if (filmObject.Poster != "N/A") {
             imgElement = `<img src="${filmObject.Poster}" class="film-img"></img>`;
         }
-        
-        filmListHTML+= `
+
+        filmListHTML += `
             <div class="search-result">
                 ${imgElement}
 
@@ -108,32 +111,32 @@ async function renderSearchResults(searchResultsArray) {
                 </div>
             </div>`
     }
-    
+
     searchResultsDiv.innerHTML = filmListHTML
 }
 
 async function fetchThenRenderFilms(filmName) {
-    
+
     const response = await fetch(`https://www.omdbapi.com/?apikey=9f3c3104&type=movie&s=${filmName}`);
     const data = await response.json();
-    
-    
-    
+
+
+
     if (data.Search) {
         renderSearchResults(data.Search);
         searchBarInput.placeholder = ". . .";
     }
-    
+
     else {
         searchResultsDiv.innerHTML = "";
-        searchMessageDiv.innerHTML = 
+        searchMessageDiv.innerHTML =
             `<p id="search-message-error">Unable to find what you’re looking for. Please try another search term.</p>`;
     }
-    
+
 }
 
 function initialiseLocalStorage() {
-    
+
     if (localStorage.getItem("filmArray")) {
         let watchlist = JSON.parse(localStorage.getItem("filmArray"));
         return watchlist

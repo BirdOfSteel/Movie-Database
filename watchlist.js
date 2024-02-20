@@ -1,3 +1,7 @@
+import './styles/index.css';
+import './styles/watchlist.css';
+
+// rest of your JavaScript code...
 const searchBarInput = document.getElementById("search-bar");
 const searchResultsDiv = document.getElementById("search-results-div");
 const searchMessageStatusDiv = document.getElementById("search-message-status-div");
