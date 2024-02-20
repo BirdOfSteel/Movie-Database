@@ -91,7 +91,7 @@ async function renderWatchlist(watchlistArray) {
                         <p class="film-length">${filmObject.Runtime}</p>
                         <p class="film-genres">${filmObject.Genre}</p>
                         <span class="remove-from-watchlist-span" data-filmid=${filmObject.imdbID}>
-                            <img src="/resources/remove-icon.png" class="remove-from-watchlist-img" data-filmid=${filmObject.imdbID}>Watchlist</img>
+                            <img src="public/remove-icon.png" class="remove-from-watchlist-img" data-filmid=${filmObject.imdbID}>Watchlist</img>
                         </span>
                     </div>
                     <p class="film-description">${filmObject.Plot}</p>

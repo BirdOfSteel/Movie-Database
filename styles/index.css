@@ -22,7 +22,7 @@ body {
 /* banner */
 #banner-div {
     background-image: linear-gradient(rgba(0, 0, 0, 0.8),
-            rgba(0, 0, 0, 0.8)), url("/resources/header-image.png");
+            rgba(0, 0, 0, 0.8)), url("public/header-image.png");
     background-size: cover;
     background-position-y: -190px;
     min-height: 200px;
