@@ -217,6 +217,36 @@ body {
     margin-top: 20%;
 }
 
+#empty-watchlist-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#empty-watchlist-div p {
+    margin: 0.65em;
+}
+
+#empty-watchlist-btn-div {
+    display: flex;
+    align-items: center;
+}
+
+#empty-watchlist-div-anchor {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#empty-watchlist-div-anchor:active {
+    color: gray;
+}
+
+#empty-watchlist-div-anchor > img {
+    padding: 0 0.5em;
+}
+
 #search-message-text {
     color: #2E2E2F;
     font-weight: 700;

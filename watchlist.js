@@ -41,7 +41,11 @@ function checkForEmptyWatchlist() {
     else {
         searchResultsDiv.innerHTML = "";
         searchMessageStatusDiv.innerHTML = 
-            `<p>Your watchlist is looking a little empty...</p>`
+            `
+            <div id="empty-watchlist-div">
+                <p>Your watchlist is looking a little empty...</p>
+                <a href="html.index" id="empty-watchlist-div-anchor"><img src="add-icon.png"></img>Let's add some movies!</a>
+            </div>`
     }
 }
 
