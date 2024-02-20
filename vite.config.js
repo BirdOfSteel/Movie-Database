@@ -1,6 +1,8 @@
-import {defineConfig} from 'vite'
-
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-	plugins: []	
+	plugins: [],
+	build: {
+		assetsInclude: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.svg', '**/*.gif', '**/*.webp', '**/*.css']
+	}
 })
