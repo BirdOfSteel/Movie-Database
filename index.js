@@ -103,7 +103,7 @@ async function renderSearchResults(searchResultsArray) {
                         <p class="film-length">${filmObject.Runtime}</p>
                         <p class="film-genres">${filmObject.Genre}</p>
                         <span class="add-to-watchlist-span add-to-watchlist-element" data-filmid=${filmObject.imdbID}>
-                            <img src="/public/add-icon.png" class="add-to-watchlist-img add-to-watchlist-element" data-filmid=${filmObject.imdbID}></img>
+                            <img src="/images/add-icon.png" class="add-to-watchlist-img add-to-watchlist-element" data-filmid=${filmObject.imdbID}></img>
                             <p class="add-to-watchlist-text add-to-watchlist-element" data-filmid=${filmObject.imdbID} data-watchlistid="${filmObject.imdbID}watchlist">Watchlist</p>
                         </span>
                     </div>

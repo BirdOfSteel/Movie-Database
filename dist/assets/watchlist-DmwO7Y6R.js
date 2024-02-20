@@ -14,7 +14,7 @@ import"./watchlist-DMi4wsba.js";const o=document.getElementById("search-bar"),r=
                         <p class="film-length">${i.Runtime}</p>
                         <p class="film-genres">${i.Genre}</p>
                         <span class="remove-from-watchlist-span" data-filmid=${i.imdbID}>
-                            <img src="/resources/remove-icon.png" class="remove-from-watchlist-img" data-filmid=${i.imdbID}>Watchlist</img>
+                            <img src="/images/remove-icon.png" class="remove-from-watchlist-img" data-filmid=${i.imdbID}>Watchlist</img>
                         </span>
                     </div>
                     <p class="film-description">${i.Plot}</p>
